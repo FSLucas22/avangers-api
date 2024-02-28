@@ -1,0 +1,76 @@
+openapi: 3.0.3
+info:
+  title: Avangers API
+  description: |-
+    Api para consulta de informações dos Avangers.
+    
+    Utilizada para aprender sobre arquitetura hexagonal com Kotlin
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://com.lucas.learn/avangers/api
+tags:
+  - name: avanger
+    description: Everything about Avangers
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+paths:
+  /v1/api/avanger:
+    get:
+      tags:
+        - avanger
+      responses:
+        "200":
+          description: GET Avangers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Avangers'
+  /v1/api/avanger/{id}:
+    get:
+      tags:
+        - avanger
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: GET Avangers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Avangers'
+components:
+  schemas:
+    Avangers:
+      type: object
+      properties:
+        nick: 
+          type: string
+          example: spider-man
+        person:
+          type: string
+          example: Peter Parker
+        description:
+          type: string 
+          example: Has spider-like powers
+        history:
+          type: string
+          example: A boy bitten by a radioactive spider
