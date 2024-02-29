@@ -1,6 +1,7 @@
 spring:
-  profiles:
-    active: server
+  config:
+    activate:
+      on-profile: server
   jackson:
     serialization:
       indent-output: true
